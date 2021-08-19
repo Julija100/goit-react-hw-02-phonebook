@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-// import ContactsList from "./components/ContactsList/ContactsList";
+import ContactsList from "./components/ContactsList/ContactsList";
 import { v4 as uuidv4 } from "uuid";
 import ContactForm from "./components/ContactForm/ContactForm";
+import Filter from "./components/Filter/Filter";
+
 
 class App extends Component {
   state = {
@@ -41,7 +43,10 @@ class App extends Component {
     return (
       <div>
         <h1>Phonebook</h1>
-        <ContactForm />
+        <ContactForm onSubmitData={this.addContact} />
+        <h2>Contacts</h2>
+        <Filter onFilterChange={this.onFilterChange} />
+        <ContactsList contacts={filteredContacts} />
       </div>
     );
   }
