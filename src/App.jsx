@@ -4,7 +4,6 @@ import { v4 as uuidv4 } from "uuid";
 import ContactForm from "./components/ContactForm/ContactForm";
 import Filter from "./components/Filter/Filter";
 
-
 class App extends Component {
   state = {
     contacts: [
@@ -35,7 +34,7 @@ class App extends Component {
     const normalFilterValue = filter.toLocaleLowerCase().trim();
 
     return contacts.filter((contact) =>
-      contact.name.toLocalLowerCase().includes(normalFilterValue)
+      contact.name.toLocaleLowerCase().includes(normalFilterValue)
     );
   };
   render() {
