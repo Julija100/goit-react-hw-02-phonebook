@@ -22,10 +22,28 @@ class App extends Component {
       name,
       number,
     };
+
+    const { contacts } = this.state;
+
+    const repeatedName = contacts.find(
+      (contact) => contact.name === contactsItem.name
+    );
+    const repeatedNumber = contacts.find(
+      (contact) => contact.number === contactsItem.number
+    );
+    if (repeatedName) {
+      alert(`${contactsItem.name} is already in contacts.`);
+      return;
+    }
+    if (repeatedNumber) {
+      alert(`${contactsItem.number} is already in contacts.`);
+      return;
+    }
     this.setState(({ contacts }) => ({
       contacts: [contactsItem, ...contacts],
     }));
   };
+
   onFilterChange = (e) => {
     this.setState({ filter: e.target.value });
   };
@@ -37,6 +55,16 @@ class App extends Component {
       contact.name.toLocaleLowerCase().includes(normalFilterValue)
     );
   };
+
+
+  deleteContact = (contactId) => {
+    this.setState((prevState) => ({
+      contacts: prevState.contacts.filter(
+        (contact) => contact.id !== contactId
+      ),
+    }));
+  }
+    
   render() {
     const filteredContacts = this.getFilteredContacts();
     return (
@@ -45,7 +73,8 @@ class App extends Component {
         <ContactForm onSubmitData={this.addContact} />
         <h2>Contacts</h2>
         <Filter onFilterChange={this.onFilterChange} />
-        <ContactsList contacts={filteredContacts} />
+        <ContactsList contacts={filteredContacts}
+          deleteContactsButton={ this.deleteContact}/>
       </div>
     );
   }

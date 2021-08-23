@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import style from '../ContactForm/ContactForm.module.css'
 
 class ContactForm extends Component {
   state = {
@@ -20,9 +21,9 @@ class ContactForm extends Component {
   render() {
     const { name, number } = this.state;
     return (
-      <form onSubmit={this.onFormSubmit}>
+      <form className={style.contactForm} onSubmit={this.onFormSubmit}>
         <label>
-          <span>Name</span>
+          <span className={style.titleStyle}>Name</span>
           <input
             type="text"
             name="name"
@@ -34,18 +35,21 @@ class ContactForm extends Component {
           />
         </label>
         <label>
-          <span>Number</span>
+          <span className={style.titleStyle}>Number</span>
           <input
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
-                    required
-                    value={number}
-                    onChange={this.onInputChange}
+            required
+            value={number}
+            onChange={this.onInputChange}
           />
-            </label>
-            <button type = 'submit'>Add contact</button>
+        </label>
+        <button
+          className={style.formButton}
+          type="submit">Add contact
+        </button>
       </form>
     );
   }

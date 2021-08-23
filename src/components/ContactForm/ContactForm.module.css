@@ -1,0 +1,16 @@
+.contactForm{
+    display: table-caption;
+    padding-left: 10px;
+}
+.titleStyle{
+font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.formButton{
+    margin-top: 7px;
+}
