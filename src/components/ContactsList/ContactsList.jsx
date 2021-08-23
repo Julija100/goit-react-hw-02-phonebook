@@ -1,13 +1,15 @@
 import PropTypes from 'prop-types'
+import style from '../ContactsList/ContactsList.module.css'
 
 const ContactsList = ({ contacts, deleteContactsButton }) => {
   return (
-    <ul>
+    <ul className = { style.contactsList}>
       {contacts.map(({ id, name, number }) => (
-        <li key={id}>
+        <li key={id} className={ style.contactsList}>
           <p>{name} - </p>
           <p>{number}- </p>
           <button
+            className={ style.contactsButton}
             type="button"
             onClick={() => deleteContactsButton(id)}
             aria-label="Delete contact button"
